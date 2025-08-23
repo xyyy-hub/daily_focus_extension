@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Focus</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div id="completed-view" class="completed-view" style="display: none;">
+      <header>
+        <h2 class="focus-time-header">
+          Focus time: <span id="timer-display" class="timer-display">00:00:00</span>
+        </h2>
+      </header>
+      
+      <main>
+        <section class="goal-display">
+          <h3><span class="emoji">🎯</span>Goal</h3>
+          <div class="goal-text" id="current-goal"></div>
+        </section>
+        
+        <section class="priorities-display">
+          <h3><span class="emoji">✅</span>Priorities</h3>
+          <div id="current-priorities" class="priorities-todo-list">
+            <!-- Dynamic priority checkboxes will be inserted here -->
+          </div>
+        </section>
+        
+        <section class="progress-display">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <p id="progress-text" class="progress-text">0 of 3 completed</p>
+        </section>
+      </main>
+      
+      <footer>
+        <button id="reset-button" class="reset-button">Reset Today's Focus</button>
+      </footer>
+    </div>
+    
+    <div id="pending-view" class="pending-view">
+      <h2>Daily Focus Pending</h2>
+      <p>You haven't set your daily focus yet. It will appear automatically when you browse the web.</p>
+      <button id="trigger-button" class="trigger-button">Set Focus Now</button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

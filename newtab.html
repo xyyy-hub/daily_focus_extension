@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Focus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .daily-focus-container {
+      padding: 60px;
+      max-width: 600px;
+      width: 90%;
+      min-height: 500px;
+      text-align: center;
+      animation: slideIn 0.6s ease-out;
+      position: relative;
+      transition: opacity 0.3s ease;
+      color: white;
+    }
+
+    /* Smooth fade transition between steps */
+    .step-content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .step-content.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+    }
+
+    .step-number {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .question-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .question-subtitle {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      white-space: nowrap;
+    }
+
+    .input-container {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .daily-input {
+      width: 100%;
+      padding: 18px 24px;
+      font-size: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .daily-input:focus {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    .daily-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .priorities-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .priority-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .priority-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      min-width: 24px;
+      text-align: left;
+    }
+
+    .priority-input {
+      flex: 1;
+      padding: 16px 20px;
+      font-size: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .priority-input:focus {
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    }
+
+    .priority-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .enter-hint {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back-button {
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .complete-button {
+      padding: 12px 32px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .complete-button:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .complete-button:disabled {
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.1);
+      cursor: not-allowed;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .skip-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .completion-message {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .completion-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      white-space: nowrap;
+    }
+
+    .completion-subtitle {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 24px;
+      white-space: nowrap;
+    }
+
+    .redirect-message {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to Google link -->
+  <a href="#" class="skip-link" id="skipLink">Skip to Google →</a>
+
+  <!-- Main container -->
+  <div class="daily-focus-container" id="mainContainer">
+    <!-- Dynamic content will be inserted here -->
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>

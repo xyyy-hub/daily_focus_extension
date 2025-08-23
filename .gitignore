@@ -1,0 +1,44 @@
+# Chrome Extension Development
+
+# Compiled packages
+*.zip
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if you add any)
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# Extension packages for distribution
+daily-focus-extension-v*.zip
+daily-focus-extension-store/
+
+# Test files (already removed)
+test*.html
+debug.js
+
+# Development artifacts
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+

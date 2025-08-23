@@ -1,0 +1,302 @@
+/* Popup styles for Daily Focus Extension */
+
+body {
+  width: 350px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow: hidden;
+  font-weight: 400;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.popup-container {
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 500px;
+  box-sizing: border-box;
+  gap: 0.8rem;
+  overflow: hidden;
+}
+
+/* Focus Time Header */
+.focus-time-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+  text-align: center;
+}
+
+.timer-display {
+  font-family: 'Monaco', 'Menlo', monospace;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Main views */
+.completed-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.pending-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Typography */
+.completed-view header {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.completed-view main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.completed-view footer {
+  flex-shrink: 0;
+  text-align: center;
+  padding-top: 0.3rem;
+}
+
+.pending-view h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.pending-view p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* Section Styling */
+section {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+section h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.emoji {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Goal Section */
+.goal-display {
+  width: 100%;
+}
+
+.goal-text {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 0.65rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Priorities Section */
+.priorities-display {
+  flex: 1;
+}
+
+.priorities-todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.priority-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 0.55rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.priority-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  accent-color: #10b981;
+  flex-shrink: 0;
+}
+
+.priority-label {
+  flex: 1;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.todo-checkbox:checked + .priority-label {
+  opacity: 0.6;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Progress Section */
+.progress-display {
+  width: 100%;
+  text-align: center;
+  flex-shrink: 0;
+  margin: 0.3rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 3px;
+  transition: width 0.4s ease, background 0.3s ease;
+  width: 0%;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.progress-text {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Buttons */
+.trigger-button, .reset-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  letter-spacing: 0.02em;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+.trigger-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.trigger-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.reset-button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reset-button:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Animations */
+.completed-view, .pending-view {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-height: 500px) {
+  .popup-container {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .priority-item {
+    padding: 0.75rem;
+  }
+  
+  .goal-text {
+    padding: 0.875rem;
+  }
+}

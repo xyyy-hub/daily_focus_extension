@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Daily Focus - Goal & Priority Tracker",
+  "version": "1.0.0",
+  "description": "Start each day with intention. Set your daily goal and 3 priorities with a beautiful, distraction-free interface that helps you stay focused and productive.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting",
+    "windows",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["newtab.html", "newtab.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Daily Focus - Goal & Priority Tracker"
+  },
+  "homepage_url":https://github.com/xyyy-hub/daily_focus_extension "",
+  "author": "Your Name"
+}
