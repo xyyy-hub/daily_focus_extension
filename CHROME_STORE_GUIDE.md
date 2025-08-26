@@ -172,3 +172,4 @@ For your Daily Focus extension:
 
 Your extension is ready for publication! The main work now is creating the required icons and screenshots.
 
+
